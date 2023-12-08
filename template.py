@@ -30,7 +30,8 @@ list_of_files = [
     "setup.py",
     "research/trials.ipynb",
     "templates/index.html",
-    "test.py"
+    "test.py",
+    "README.md"
 ]
 
 for filepath in list_of_files:
