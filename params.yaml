@@ -1,1 +1,9 @@
-key: val
+MultinomialNB:
+  - alpha:
+    - 1
+    - 2
+    - 3
+    - 4
+  - fit_prior:
+    - True
+    - False

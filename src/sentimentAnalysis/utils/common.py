@@ -4,11 +4,12 @@ import yaml
 from mlProject import logger
 import json
 import joblib
+import pickle
 from ensure import ensure_annotations
 from box import ConfigBox
 from pathlib import Path
 from typing import Any
-
+import csv
 
 
 @ensure_annotations
@@ -125,5 +126,44 @@ def get_size(path: Path) -> str:
     size_in_kb = round(os.path.getsize(path)/1024)
     return f"~ {size_in_kb} KB"
 
+@ensure_annotations
+def save_pickle(data: Any, path: Path) -> None:
+    """save pickle file
 
+    Args:
+        data (Any): data to be saved as binary
+        path (Path): path to binary file
+    """
+    with open(path, "wb") as f:
+        pickle.dump(data, f)
 
+    logger.info(f"pickle file saved at: {path}")
+
+@ensure_annotations
+def load_pickle(path: Path) -> Any:
+    """load pickle data
+
+    Args:
+        path (Path): path to binary file
+
+    Returns:
+        Any: object stored in the file
+    """
+    with open(path, 'rb') as f:
+        data = pickle.load(f)
+    logger.info(f"pickle file loaded from: {path}")
+    return data
+
+def save_csv_corpus(data:list, path:Path) -> None:
+    """save text corpus as CSV file
+
+    Args:
+        data (Any): data to be saved as binary
+        path (Path): path to binary file
+    """
+    with open(path, "w", newline='') as f:
+        writer = csv.writer(f)
+        for i in data:
+            writer.writerow([i])
+
+    logger.info(f"pickle file saved at: {path}")
