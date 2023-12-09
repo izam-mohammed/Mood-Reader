@@ -10,3 +10,11 @@ data_validation:
   root_dir: artifacts/data_validation
   unzip_data_dir: artifacts/data_ingestion/sentiment_data/train.txt
   STATUS_FILE: artifacts/data_validation/status.txt
+
+data_transformation:
+  root_dir: artifacts/data_transformation
+  data_path: artifacts/data_ingestion/sentiment_data/train.txt
+  text_corpus_name: text_corpus.csv
+  target_col_encoded_file: target_col_encoded_df.csv
+  vectorizer_name: tfidf_vectorizer.pkl
+  vocabulary_name: vocabulary.pkl
