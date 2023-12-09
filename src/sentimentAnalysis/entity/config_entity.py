@@ -17,6 +17,8 @@ class DataValidationConfig:
     unzip_data_dir: Path
     all_schema: dict
     delimeter: str
+    target_out: list
+    target_col: str
 
 
 # enitity

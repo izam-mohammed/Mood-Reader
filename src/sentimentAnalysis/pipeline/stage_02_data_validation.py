@@ -15,6 +15,7 @@ class DataValidationTrainingPipeline:
         data_validation_config = config.get_data_validation_config()
         data_validation = DataValiadtion(config=data_validation_config)
         data_validation.validate_all_columns()
+        data_validation.validate_labels()
 
     
 if __name__ == '__main__':

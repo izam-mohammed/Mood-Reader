@@ -39,6 +39,8 @@ class ConfigurationManager:
         config = self.config.data_validation
         schema = self.schema.COLUMNS
         delimeter = self.schema.DELIMITER
+        target_out = self.schema.TARGET_OUT
+        target_col = self.schema.TARGET_COLUMN.name
 
         create_directories([config.root_dir])
 
@@ -47,7 +49,9 @@ class ConfigurationManager:
             STATUS_FILE=config.STATUS_FILE,
             unzip_data_dir = config.unzip_data_dir,
             all_schema=schema,
-            delimeter=delimeter
+            delimeter=delimeter,
+            target_out=target_out,
+            target_col=target_col,
         )
 
         return data_validation_config

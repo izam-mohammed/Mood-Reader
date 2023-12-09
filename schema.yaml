@@ -7,3 +7,11 @@ DELIMITER: ;
 
 TARGET_COLUMN:
   name: label
+
+TARGET_OUT:
+  - sadness
+  - anger
+  - love
+  - surprise
+  - fear
+  - joy
