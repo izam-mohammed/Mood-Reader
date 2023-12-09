@@ -29,3 +29,4 @@ class DataTransformationConfig:
     target_col_encoded_file: str
     vectorizer_name: str
     vocabulary_name: str
+    test_size: float

@@ -18,3 +18,4 @@ data_transformation:
   target_col_encoded_file: target_col_encoded_df.csv
   vectorizer_name: tfidf_vectorizer.pkl
   vocabulary_name: vocabulary.pkl
+  test_size: 0.1

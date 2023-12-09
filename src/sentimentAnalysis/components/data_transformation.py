@@ -119,7 +119,7 @@ class DataTransformation:
             logger.info(f"using the {self.config.data_path} file for splitting")
 
         # Split the data into training and test sets. (0.75, 0.25) split.
-        X_train, X_test, y_train, y_test = train_test_split(corpus, data['label'], test_size=0.1)
+        X_train, X_test, y_train, y_test = train_test_split(corpus, data['label'], test_size=self.config.test_size)
         
         train = pd.concat([X_train, y_train], axis=1)
         test = pd.concat([X_test, y_test], axis=1)

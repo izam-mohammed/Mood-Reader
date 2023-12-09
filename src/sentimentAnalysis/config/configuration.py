@@ -66,6 +66,7 @@ class ConfigurationManager:
             target_col_encoded_file=config.target_col_encoded_file,
             vectorizer_name=config.vectorizer_name,
             vocabulary_name=config.vocabulary_name,
+            test_size=config.test_size,
         )
 
         return data_transformation_config
