@@ -127,7 +127,7 @@ def get_size(path: Path) -> str:
     return f"~ {size_in_kb} KB"
 
 @ensure_annotations
-def save_pickle(data: Any, path: Path) -> None:
+def save_pickle(path: Path, data):
     """save pickle file
 
     Args:
