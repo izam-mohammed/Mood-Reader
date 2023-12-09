@@ -12,12 +12,3 @@
 7. Update the pipeline 
 8. Update the main.py
 9. Update the app.py
-
-### DagsHub
-
-```
-MLFLOW_TRACKING_URI=https://dagshub.com/izam-mohammed/Sentiment-Analysis.mlflow \
-MLFLOW_TRACKING_USERNAME=izam-mohammed \
-MLFLOW_TRACKING_PASSWORD=f497810936eeaf4fdc502187990343255063fd53 \
-python script.py
-```
