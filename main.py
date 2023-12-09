@@ -15,6 +15,7 @@ from sentimentAnalysis.pipeline.stage_05_model_evaluation import (
     ModelEvaluationTrainingPipeline,
 )
 
+
 if __name__ == "__main__":
     STAGE_NAME = "Data Ingestion stage"
     try:

@@ -62,10 +62,10 @@ def index():
         return render_template("index.html")
 
 
-@app.route("/predict_data", methods=["POST"])
+@app.route("/predict_data", methods=["POST", "GET"])
 def pred():
     try:
-        text = request.get_json().get("text")
+        text = request.args.get("text")
         config = ConfigurationManager()
         config = config.get_prediction_config()
         data_path = config.data_path
@@ -73,13 +73,13 @@ def pred():
             f.write(text)
 
         obj = PredictionPipeline()
-        obj.predict()
+        obj.main()
 
         predition_path = config.prediction_file
         file = load_json(path=Path(predition_path))
         predict = file["prediction"]
 
-        return jsonify({"result": predict})
+        return jsonify({"result": "positive" if predict else "negative"})
 
     except Exception as e:
         print("The Exception message is: ", e)
