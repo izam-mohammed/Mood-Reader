@@ -3,8 +3,8 @@ from sentimentAnalysis.components.data_ingestion import DataIngestion
 from sentimentAnalysis import logger
 
 
-
 STAGE_NAME = "Data Ingestion stage"
+
 
 class DataIngestionTrainingPipeline:
     def __init__(self):
@@ -18,8 +18,7 @@ class DataIngestionTrainingPipeline:
         data_ingestion.extract_zip_file()
 
 
-    
-if __name__ == '__main__':
+if __name__ == "__main__":
     try:
         logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<")
         obj = DataIngestionTrainingPipeline()

@@ -35,7 +35,6 @@ def read_yaml(path_to_yaml: Path) -> ConfigBox:
         raise ValueError("yaml file is empty")
     except Exception as e:
         raise e
-    
 
 
 @ensure_annotations
@@ -64,8 +63,6 @@ def save_json(path, data: dict):
         json.dump(data, f, indent=4)
 
     logger.info(f"json file saved at: {path}")
-
-
 
 
 @ensure_annotations
@@ -112,7 +109,6 @@ def load_bin(path: Path) -> Any:
     return data
 
 
-
 @ensure_annotations
 def get_size(path: Path) -> str:
     """get size in KB
@@ -123,8 +119,9 @@ def get_size(path: Path) -> str:
     Returns:
         str: size in KB
     """
-    size_in_kb = round(os.path.getsize(path)/1024)
+    size_in_kb = round(os.path.getsize(path) / 1024)
     return f"~ {size_in_kb} KB"
+
 
 @ensure_annotations
 def save_pickle(path: Path, data):
@@ -139,6 +136,7 @@ def save_pickle(path: Path, data):
 
     logger.info(f"pickle file saved at: {path}")
 
+
 @ensure_annotations
 def load_pickle(path: Path):
     """load pickle data
@@ -149,20 +147,20 @@ def load_pickle(path: Path):
     Returns:
         Any: object stored in the file
     """
-    with open(path, 'rb') as f:
+    with open(path, "rb") as f:
         data = pickle.load(f)
     logger.info(f"pickle file loaded from: {path}")
     return data
 
 
-def save_csv_corpus(data:list, path:Path) -> None:
+def save_csv_corpus(data: list, path: Path) -> None:
     """save text corpus as CSV file
 
     Args:
         data (Any): data to be saved as binary
         path (Path): path to binary file
     """
-    with open(path, "w", newline='') as f:
+    with open(path, "w", newline="") as f:
         writer = csv.writer(f)
         for i in data:
             writer.writerow([i])
@@ -185,8 +183,9 @@ def round_batch(*vars):
         res.append(round(i, 2))
     return tuple(res)
 
+
 @ensure_annotations
-def read_text(path:Path) -> list:
+def read_text(path: Path) -> list:
     """read a text file
 
     Args:
@@ -196,7 +195,7 @@ def read_text(path:Path) -> list:
         list: contains the text
     """
     res = []
-    with open(path, newline='') as f:
+    with open(path, newline="") as f:
         reader = csv.reader(f)
         for row in reader:
             res.append(row)

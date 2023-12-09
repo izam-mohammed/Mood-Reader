@@ -5,6 +5,7 @@ from sentimentAnalysis import logger
 
 STAGE_NAME = "Model Evaluation stage"
 
+
 class ModelEvaluationTrainingPipeline:
     def __init__(self) -> None:
         pass
@@ -16,7 +17,7 @@ class ModelEvaluationTrainingPipeline:
         model_trainer_config.evaluate()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     try:
         logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<")
         obj = ModelEvaluationTrainingPipeline()

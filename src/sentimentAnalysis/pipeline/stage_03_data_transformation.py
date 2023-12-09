@@ -5,6 +5,7 @@ from sentimentAnalysis import logger
 
 STAGE_NAME = "Data Tranformation stage"
 
+
 class DataTransformationTrainingPipeline:
     def __init__(self) -> None:
         pass
@@ -19,8 +20,7 @@ class DataTransformationTrainingPipeline:
         data_transformation.train_test_spliting()
 
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     try:
         logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<")
         obj = DataTransformationTrainingPipeline()

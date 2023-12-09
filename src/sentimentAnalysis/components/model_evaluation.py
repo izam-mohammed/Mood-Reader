@@ -6,12 +6,12 @@ from sentimentAnalysis import logger
 from sentimentAnalysis.entity.config_entity import ModelEvaluationConfig
 from pathlib import Path
 
+
 class ModelEvaluation:
     def __init__(self, config: ModelEvaluationConfig):
         self.config = config
-    
 
-    def _eval_metrics(self,actual, pred):
+    def _eval_metrics(self, actual, pred):
         acc = accuracy_score(actual, pred)
         precision = precision_score(actual, pred)
         recall = recall_score(actual, pred)
@@ -35,8 +35,8 @@ class ModelEvaluation:
         acc, precision, recall, f1 = self._eval_metrics(y, pred)
 
         metric = {
-            "Accuracy" : acc,
-            "Precision" : precision,
+            "Accuracy": acc,
+            "Precision": precision,
             "Recall": recall,
             "F1 score": f1,
         }

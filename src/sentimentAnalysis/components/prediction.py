@@ -17,14 +17,13 @@ class Prediction:
         except Exception as e:
             logger.info(f"file not found in {self.config.model_path}")
             logger.info("using the word 'no' instead")
-            data = ['no']
+            data = ["no"]
         data = np.array(data)[:, 0]
-        
+
         matrix = vectorizer.transform(data)
         prediction = model.predict(matrix)
         logger.info(f"predicted the new data as {prediction[0]}")
 
-
-        save_json(path=self.config.prediction_file, data={'prediction':float(prediction[0])})
-        
-        
+        save_json(
+            path=self.config.prediction_file, data={"prediction": float(prediction[0])}
+        )
