@@ -17,3 +17,15 @@ class DataValidationConfig:
     unzip_data_dir: Path
     all_schema: dict
     delimeter: str
+
+
+# enitity
+@dataclass(frozen=True)
+class DataTransformationConfig:
+    root_dir: Path
+    data_path: Path
+    delimiter: str
+    text_corpus_name: str
+    target_col_encoded_file: str
+    vectorizer_name: str
+    vocabulary_name: str

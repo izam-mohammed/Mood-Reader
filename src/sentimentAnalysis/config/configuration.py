@@ -1,7 +1,8 @@
 from sentimentAnalysis.constants import *
 from sentimentAnalysis.utils.common import read_yaml, create_directories
 from sentimentAnalysis.entity.config_entity import (DataIngestionConfig,
-                                                    DataValidationConfig)
+                                                    DataValidationConfig,
+                                                    DataTransformationConfig)
 
 #udpate configuration manager
 class ConfigurationManager:
@@ -50,3 +51,21 @@ class ConfigurationManager:
         )
 
         return data_validation_config
+    
+
+    def get_data_transformation_config(self) -> DataTransformationConfig:
+        config = self.config.data_transformation
+
+        create_directories([config.root_dir])
+
+        data_transformation_config = DataTransformationConfig(
+            root_dir=config.root_dir,
+            data_path=config.data_path,
+            delimiter=self.schema.DELIMITER,
+            text_corpus_name=config.text_corpus_name,
+            target_col_encoded_file=config.target_col_encoded_file,
+            vectorizer_name=config.vectorizer_name,
+            vocabulary_name=config.vocabulary_name,
+        )
+
+        return data_transformation_config
