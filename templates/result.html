@@ -10,37 +10,25 @@
 </head>
 
 <body>
-    <section class="vh-100" style="background-image: linear-gradient(to right,rgb(208, 57, 225),orange);">
+    <section class="vh-100" style="{{bg_style}}">
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-12 col-md-8 col-lg-6 col-xl-5">
                     <div class="card shadow-2-strong" style="border-radius: 1rem">
                         <div class="card-body p-5 text-center">
-                            <h3 class="mb-5" style="font-weight: 900">
-                                Sentiment Analysis
+                            <h3 class="mb-5 mt-4" style="font-weight: 900">
+                                It is a {{sentiment}} sentance
                             </h3>
-                            <form action="/predict" method="post">
-                                
-                                <div class="form-outline mb-4">
-                                    <label style="
-                                                float: left;
-                                                margin: 10px 20px 0 20px;
-                                            " class="fw-bold">Please Enter the sentence here</label>
-                                    <textarea type="text" class="form-control form-control-lg" name="text" style="
-                                                font-size: 14px;
-                                                height: 300px;
-                                            " cols="30" rows="10" id="text"></textarea>
-                                </div>
 
                                 
 
-                                <button class="btn btn-lg btn-block" type="submit" style="
+                                <a href="/"><button class="btn btn-lg btn-block" type="submit" style="
                                             background-color: rgb(108, 0, 67);
                                             color: rgb(255, 255, 255);
                                             font-weight: bold;
                                         ">
-                                    Predict
-                                </button>
+                                    Back to Home
+                                </button></a>
                             </form>
                         </div>
                     </div>
