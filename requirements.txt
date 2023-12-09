@@ -1,2 +1,7 @@
 scikit-plot==0.3.7
--e .
+mlflow
+types-PyYAML
+Flask
+Flask-Cors
+python-box
+#-e .

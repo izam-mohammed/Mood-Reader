@@ -167,3 +167,19 @@ def save_csv_corpus(data:list, path:Path) -> None:
             writer.writerow([i])
 
     logger.info(f"pickle file saved at: {path}")
+
+
+def round_batch(*vars):
+    """
+    Round a batch of values individually
+
+    Args:
+        Any
+
+    Returns:
+        tuple: contain all values in batch
+    """
+    res = []
+    for i in vars:
+        res.append(round(i, 2))
+    return tuple(res)
