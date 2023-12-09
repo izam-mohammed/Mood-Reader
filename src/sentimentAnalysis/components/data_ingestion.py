@@ -4,6 +4,7 @@ import zipfile
 from sentimentAnalysis import logger
 from sentimentAnalysis.utils.common import get_size
 from sentimentAnalysis.entity.config_entity import DataIngestionConfig
+from pathlib import Path
 
 
 
