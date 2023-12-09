@@ -21,7 +21,6 @@ class DataValidationConfig:
     target_col: str
 
 
-# enitity
 @dataclass(frozen=True)
 class DataTransformationConfig:
     root_dir: Path
@@ -32,3 +31,15 @@ class DataTransformationConfig:
     vectorizer_name: str
     vocabulary_name: str
     test_size: float
+
+
+@dataclass(frozen=True)
+class ModelTrainerConfig:
+    root_dir: Path
+    train_data_path: Path
+    test_data_path: Path
+    model_name: str
+    model_params: dict
+    target_column: str
+    vectorizer_path: str
+    vocabulary_path: str
