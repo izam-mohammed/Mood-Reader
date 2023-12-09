@@ -1,1 +1,9 @@
-key: val
+COLUMNS:
+  text: Object
+  label: Object
+
+# the splitter in the data - delimeter
+DELIMITER: ;
+
+TARGET_COLUMN:
+  name: label
