@@ -18,9 +18,22 @@ from sentimentAnalysis.entity.config_entity import DataTransformationConfig
 
 class DataTransformation:
     def __init__(self, config: DataTransformationConfig):
+        """
+        Initialize DataTransformation instance.
+
+        Parameters:
+            config: DataTransformationConfig
+                Configuration object containing necessary parameters.
+        """
         self.config = config
 
     def target_encode(self):
+        """
+        Encode the target column and save the result to a new CSV file.
+
+        Returns:
+            None
+        """
         df = pd.read_csv(self.config.data_path, delimiter=self.config.delimiter)
 
         df.replace(to_replace="surprise", value=1, inplace=True)
@@ -40,6 +53,12 @@ class DataTransformation:
         logger.info("fear, anger, sadness ---> 0")
 
     def clean_text_data(self):
+        """
+        Transform text data using TF-IDF vectorization and save the transformer and vocabulary.
+
+        Returns:
+            None
+        """
         try:
             data = pd.read_csv(
                 os.path.join(self.config.root_dir, self.confi.target_col_encoded_file)
@@ -79,6 +98,13 @@ class DataTransformation:
         logger.info(f"Saved text corpus {self.config.text_corpus_name}")
 
     def transform_text(self):
+        """
+        Split the data into training and test sets and save them as CSV files.
+
+        Returns:
+            None
+        """
+
         # access the clean df
         try:
             corpus = pd.read_csv(

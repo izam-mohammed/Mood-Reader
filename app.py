@@ -62,6 +62,7 @@ def index():
         return render_template("index.html")
 
 
+# api call
 @app.route("/predict_data", methods=["POST", "GET"])
 def pred():
     try:

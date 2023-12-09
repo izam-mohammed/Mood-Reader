@@ -8,10 +8,27 @@ from pathlib import Path
 
 
 class DataIngestion:
+    """
+    A class for Data Ingestion
+    """
+
     def __init__(self, config: DataIngestionConfig):
+        """Initialize the data ingestion
+
+        Args:
+            config: configuration file for data ingestion
+        """
         self.config = config
 
     def download_file(self):
+        """Download the data file and save it
+
+        Args:
+            None
+
+        Returns:
+            None
+        """
         if not os.path.exists(self.config.local_data_file):
             filename, headers = request.urlretrieve(
                 url=self.config.source_URL, filename=self.config.local_data_file
@@ -23,10 +40,13 @@ class DataIngestion:
             )
 
     def extract_zip_file(self):
-        """
-        zip_file_path: str
-        Extracts the zip file into the data directory
-        Function returns None
+        """Extracts the zip file into the data directory
+
+        Args:
+            None
+
+        Returns:
+            None
         """
         unzip_path = self.config.unzip_dir
         os.makedirs(unzip_path, exist_ok=True)

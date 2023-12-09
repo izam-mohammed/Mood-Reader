@@ -6,9 +6,23 @@ from sentimentAnalysis.entity.config_entity import DataValidationConfig
 
 class DataValiadtion:
     def __init__(self, config: DataValidationConfig):
+        """
+        Initialize DataValidation instance.
+
+        Parameters:
+            config: DataValidationConfig
+                Configuration object containing necessary parameters.
+        """
         self.config = config
 
     def validate_all_columns(self) -> bool:
+        """
+        Validate if all columns in the dataset match the expected schema.
+
+        Returns:
+            bool:
+                True if all columns are valid, False otherwise.
+        """
         try:
             validation_status = None
 
@@ -34,6 +48,13 @@ class DataValiadtion:
             raise e
 
     def validate_labels(self) -> bool:
+        """
+        Validate if the target labels in the dataset match the expected target labels.
+
+        Returns:
+            bool:
+                True if labels are valid, False otherwise.
+        """
         try:
             data = pd.read_csv(
                 self.config.unzip_data_dir, delimiter=self.config.delimeter

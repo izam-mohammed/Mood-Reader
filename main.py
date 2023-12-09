@@ -16,53 +16,31 @@ from sentimentAnalysis.pipeline.stage_05_model_evaluation import (
 )
 
 
+def run_pipeline(stage_name, pipeline_instance):
+    """
+    Run a specific stage of the sentiment analysis pipeline.
+
+    Parameters:
+    - stage_name: str
+        Name of the pipeline stage.
+    - pipeline_instance: object
+        Instance of the pipeline stage to be executed.
+
+    Returns:
+        None
+    """
+    try:
+        logger.info(f">>>>>> Stage {stage_name} started <<<<<<")
+        pipeline_instance.main()
+        logger.info(f">>>>>> Stage {stage_name} completed <<<<<<\n\nx==========x")
+    except Exception as e:
+        logger.exception(e)
+        raise e
+
+
 if __name__ == "__main__":
-    STAGE_NAME = "Data Ingestion stage"
-    try:
-        logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<")
-        data_ingestion = DataIngestionTrainingPipeline()
-        data_ingestion.main()
-        logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx==========x")
-    except Exception as e:
-        logger.exception(e)
-        raise e
-
-    STAGE_NAME = "Data Validation stage"
-    try:
-        logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<")
-        data_ingestion = DataValidationTrainingPipeline()
-        data_ingestion.main()
-        logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx==========x")
-    except Exception as e:
-        logger.exception(e)
-        raise e
-
-    STAGE_NAME = "Data Transformation stage"
-    try:
-        logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<")
-        data_ingestion = DataTransformationTrainingPipeline()
-        data_ingestion.main()
-        logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx==========x")
-    except Exception as e:
-        logger.exception(e)
-        raise e
-
-    STAGE_NAME = "Model Training stage"
-    try:
-        logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<")
-        data_ingestion = ModelTrainerTrainingPipeline()
-        data_ingestion.main()
-        logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx==========x")
-    except Exception as e:
-        logger.exception(e)
-        raise e
-
-    STAGE_NAME = "Model Evaluation stage"
-    try:
-        logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<")
-        data_ingestion = ModelEvaluationTrainingPipeline()
-        data_ingestion.main()
-        logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx==========x")
-    except Exception as e:
-        logger.exception(e)
-        raise e
+    run_pipeline("Data Ingestion", DataIngestionTrainingPipeline())
+    run_pipeline("Data Validation", DataValidationTrainingPipeline())
+    run_pipeline("Data Transformation", DataTransformationTrainingPipeline())
+    run_pipeline("Model Training", ModelTrainerTrainingPipeline())
+    run_pipeline("Model Evaluation", ModelEvaluationTrainingPipeline())

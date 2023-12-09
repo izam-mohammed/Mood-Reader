@@ -7,9 +7,22 @@ from pathlib import Path
 
 class Prediction:
     def __init__(self, config: PredictionConfig):
+        """
+        Initialize Prediction instance.
+
+        Parameters:
+        - config: PredictionConfig
+            Configuration object containing necessary parameters.
+        """
         self.config = config
 
     def predict(self):
+        """
+        Use the trained model to predict sentiment for new data and save the prediction.
+
+        Returns:
+            None
+        """
         model = load_pickle(Path(self.config.model_path))
         vectorizer = load_pickle(Path(self.config.vectorizer_path))
         try:

@@ -18,6 +18,17 @@ class ConfigurationManager:
         params_filepath=PARAMS_FILE_PATH,
         schema_filepath=SCHEMA_FILE_PATH,
     ):
+        """
+        Initialize ConfigurationManager instance.
+
+        Parameters:
+        - config_filepath: str
+            Filepath for the configuration file.
+        - params_filepath: str
+            Filepath for the parameters file.
+        - schema_filepath: str
+            Filepath for the schema file.
+        """
         self.config = read_yaml(config_filepath)
         self.params = read_yaml(params_filepath)
         self.schema = read_yaml(schema_filepath)
@@ -25,6 +36,13 @@ class ConfigurationManager:
         create_directories([self.config.artifacts_root])
 
     def get_data_ingestion_config(self) -> DataIngestionConfig:
+        """
+        Get the configuration object for data ingestion.
+
+        Returns:
+        - DataIngestionConfig
+            Configuration object for data ingestion.
+        """
         config = self.config.data_ingestion
 
         create_directories([config.root_dir])
@@ -39,6 +57,13 @@ class ConfigurationManager:
         return data_ingestion_config
 
     def get_data_validation_config(self) -> DataValidationConfig:
+        """
+        Get the configuration object for data validation.
+
+        Returns:
+        - DataValidationConfig
+            Configuration object for data validation.
+        """
         config = self.config.data_validation
         schema = self.schema.COLUMNS
         delimeter = self.schema.DELIMITER
@@ -60,6 +85,13 @@ class ConfigurationManager:
         return data_validation_config
 
     def get_data_transformation_config(self) -> DataTransformationConfig:
+        """
+        Get the configuration object for data transformation.
+
+        Returns:
+        - DataTransformationConfig
+            Configuration object for data transformation.
+        """
         config = self.config.data_transformation
 
         create_directories([config.root_dir])
@@ -78,6 +110,13 @@ class ConfigurationManager:
         return data_transformation_config
 
     def get_model_trainer_config(self) -> ModelTrainerConfig:
+        """
+        Get the configuration object for model training.
+
+        Returns:
+        - ModelTrainerConfig
+            Configuration object for model training.
+        """
         config = self.config.model_trainer
         params = self.params
         schema = self.schema.TARGET_COLUMN
@@ -98,6 +137,13 @@ class ConfigurationManager:
         return model_trainer_config
 
     def get_model_evaluation_config(self) -> ModelEvaluationConfig:
+        """
+        Get the configuration object for model evaluation.
+
+        Returns:
+        - ModelEvaluationConfig
+            Configuration object for model evaluation.
+        """
         config = self.config.model_evaluation
         schema = self.schema.TARGET_COLUMN
 
@@ -115,6 +161,13 @@ class ConfigurationManager:
         return model_evaluation_config
 
     def get_prediction_config(self) -> PredictionConfig:
+        """
+        Get the configuration object for prediction.
+
+        Returns:
+        - PredictionConfig
+            Configuration object for prediction.
+        """
         config = self.config.prediction
 
         create_directories([config.root_dir])

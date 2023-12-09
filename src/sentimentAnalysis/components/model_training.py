@@ -11,9 +11,22 @@ from pathlib import Path
 
 class ModelTrainer:
     def __init__(self, config: ModelTrainerConfig):
+        """
+        Initialize ModelTrainer instance.
+
+        Parameters:
+        - config: ModelTrainerConfig
+            Configuration object containing necessary parameters.
+        """
         self.config = config
 
     def train(self):
+        """
+        Train a model using the provided training data and save the best model.
+
+        Returns:
+            None
+        """
         train_data = pd.read_csv(self.config.train_data_path)
         test_data = pd.read_csv(self.config.test_data_path)
 

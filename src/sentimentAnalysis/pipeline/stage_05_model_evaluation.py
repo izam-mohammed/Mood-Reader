@@ -8,9 +8,18 @@ STAGE_NAME = "Model Evaluation stage"
 
 class ModelEvaluationTrainingPipeline:
     def __init__(self) -> None:
+        """
+        Initialize ModelEvaluationTrainingPipeline instance.
+        """
         pass
 
     def main(self):
+        """
+        Execute the main steps of the model evaluation training pipeline.
+
+        Returns:
+        None
+        """
         config = ConfigurationManager()
         model_trainer_config = config.get_model_evaluation_config()
         model_trainer_config = ModelEvaluation(config=model_trainer_config)

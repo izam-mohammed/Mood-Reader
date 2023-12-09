@@ -8,9 +8,18 @@ STAGE_NAME = "Data Validation stage"
 
 class DataValidationTrainingPipeline:
     def __init__(self):
+        """
+        Initialize DataValidationTrainingPipeline instance.
+        """
         pass
 
     def main(self):
+        """
+        Execute the main steps of the data validation training pipeline.
+
+        Returns:
+        None
+        """
         config = ConfigurationManager()
         data_validation_config = config.get_data_validation_config()
         data_validation = DataValiadtion(config=data_validation_config)

@@ -8,9 +8,18 @@ STAGE_NAME = "Data Tranformation stage"
 
 class DataTransformationTrainingPipeline:
     def __init__(self) -> None:
+        """
+        Initialize DataTransformationTrainingPipeline instance.
+        """
         pass
 
     def main(self):
+        """
+        Execute the main steps of the data transformation training pipeline.
+
+        Returns:
+            None
+        """
         config = ConfigurationManager()
         data_transformation_config = config.get_data_transformation_config()
         data_transformation = DataTransformation(config=data_transformation_config)
