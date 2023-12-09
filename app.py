@@ -3,6 +3,9 @@ import os
 import numpy as np
 import pandas as pd
 from sentimentAnalysis.pipeline.prediction import PredictionPipeline
+from sentimentAnalysis.config.configuration import ConfigurationManager
+from sentimentAnalysis.utils.common import load_json
+from pathlib import Path
 
 
 app = Flask(__name__) # initializing a flask app
@@ -24,13 +27,22 @@ def index():
         try:
             #  reading the inputs given by the user
             text = request.form['text']
-
-            data = np.array([text])
+            config = ConfigurationManager()
+            config = config.get_prediction_config()
+            data_path = config.data_path
+            with open(data_path, 'w') as f:
+                f.write(text)
             
             obj = PredictionPipeline()
-            predict = obj.predict(data)
-            sentiment_color = "background-color: red;" if predict=="Negative" else "background-color: green;"
-            return render_template('result.html', sentiment=predict, sentiment_color="black", bg_style=sentiment_color)
+            obj.main()
+
+            predition_path = config.prediction_file
+            file = load_json(path = Path(predition_path))
+            predict = file['prediction']
+
+            sentiment_color = "background-color: red;" if predict==0 else "background-color: green;"
+            sentiment = "Negative" if not predict else "Positive"
+            return render_template('result.html', sentiment=sentiment, sentiment_color="black", bg_style=sentiment_color)
 
         except Exception as e:
             print('The Exception message is: ',e)
@@ -42,15 +54,26 @@ def index():
 @app.route('/predict_data', methods=['POST'])
 def pred():
     try:
-          text = request.get_json().get('text')
-          obj = PredictionPipeline()
-          predict = obj.predict(text)
+        text = request.get_json().get('text')
+        config = ConfigurationManager()
+        config = config.get_prediction_config()
+        data_path = config.data_path
+        with open(data_path, 'w') as f:
+            f.write(text)
+        
+        obj = PredictionPipeline()
+        obj.predict()
 
-          return jsonify({'result': predict})
+        predition_path = config.prediction_file
+        file = load_json(path = Path(predition_path))
+        predict = file['prediction']
+
+
+        return jsonify({'result': predict})
     
     except Exception as e:
-         print('The Exception message is: ',e)
-         return jsonify({'result':'error'})
+        print('The Exception message is: ',e)
+        return jsonify({'result':'error'})
 
 if __name__ == "__main__":
 	# app.run(host="0.0.0.0", port = 8080, debug=True)

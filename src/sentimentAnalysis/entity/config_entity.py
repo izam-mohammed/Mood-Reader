@@ -54,3 +54,11 @@ class ModelEvaluationConfig:
     metric_file_name: Path
     target_column: str
     vectorizer_path: str
+
+@dataclass(frozen=True)
+class PredictionConfig:
+    root_dir: Path
+    model_path: Path
+    vectorizer_path: str
+    data_path: str
+    prediction_file: str

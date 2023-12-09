@@ -34,3 +34,10 @@ model_evaluation:
   model_path: artifacts/model_trainer/model.pkl
   metric_file_name: artifacts/model_evaluation/metrics.json
   vectorizer_path: artifacts/data_transformation/tfidf_vectorizer.pkl
+
+prediction:
+  root_dir: artifacts/prediction
+  model_path: artifacts/model_trainer/model.pkl
+  vectorizer_path: artifacts/data_transformation/tfidf_vectorizer.pkl
+  data_path: artifacts/prediction/data.csv
+  prediction_file: artifacts/prediction/prediction.json

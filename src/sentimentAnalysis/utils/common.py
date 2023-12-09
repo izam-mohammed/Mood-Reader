@@ -53,7 +53,7 @@ def create_directories(path_to_directories: list, verbose=True):
 
 
 @ensure_annotations
-def save_json(path: Path, data: dict):
+def save_json(path, data: dict):
     """save json data
 
     Args:
@@ -154,6 +154,7 @@ def load_pickle(path: Path):
     logger.info(f"pickle file loaded from: {path}")
     return data
 
+
 def save_csv_corpus(data:list, path:Path) -> None:
     """save text corpus as CSV file
 
@@ -183,3 +184,20 @@ def round_batch(*vars):
     for i in vars:
         res.append(round(i, 2))
     return tuple(res)
+
+@ensure_annotations
+def read_text(path:Path) -> list:
+    """read a text file
+
+    Args:
+        path (Path): path of the file
+
+    Returns:
+        list: contains the text
+    """
+    res = []
+    with open(path, newline='') as f:
+        reader = csv.reader(f)
+        for row in reader:
+            res.append(row)
+    return res
