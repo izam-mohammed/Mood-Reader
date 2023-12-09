@@ -1,6 +1,3 @@
-import joblib
-import numpy as np
-import pandas as pd
 from pathlib import Path
 from sentimentAnalysis.utils.common import load_pickle
 from sentimentAnalysis.config.configuration import ConfigurationManager
