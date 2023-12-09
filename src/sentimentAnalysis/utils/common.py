@@ -140,7 +140,7 @@ def save_pickle(path: Path, data):
     logger.info(f"pickle file saved at: {path}")
 
 @ensure_annotations
-def load_pickle(path: Path) -> Any:
+def load_pickle(path: Path):
     """load pickle data
 
     Args:
