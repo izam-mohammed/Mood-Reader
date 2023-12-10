@@ -1,7 +1,7 @@
 import os
 from box.exceptions import BoxValueError
 import yaml
-from mlProject import logger
+from sentimentAnalysis import logger
 import json
 import joblib
 import pickle
