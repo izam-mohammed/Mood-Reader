@@ -3,7 +3,7 @@ from sentimentAnalysis import logger
 from sentimentAnalysis.entity.config_entity import PredictionConfig
 from sentimentAnalysis.utils.common import load_pickle, read_text, save_json
 from pathlib import Path
-
+from transformers import pipeline
 
 class Prediction:
     def __init__(self, config: PredictionConfig):
@@ -23,20 +23,25 @@ class Prediction:
         Returns:
             None
         """
-        model = load_pickle(Path(self.config.model_path))
-        vectorizer = load_pickle(Path(self.config.vectorizer_path))
+        model = pipeline("sentiment-analysis", framework="pt", model="SamLowe/roberta-base-go_emotions")
         try:
             data = read_text(path=Path(self.config.data_path))
         except Exception as e:
             logger.info(f"file not found in {self.config.model_path}")
             logger.info("using the word 'no' instead")
             data = ["no"]
-        data = np.array(data)[:, 0]
-
-        matrix = vectorizer.transform(data)
-        prediction = model.predict(matrix)
-        logger.info(f"predicted the new data as {prediction[0]}")
+        data = data[0]
+        logger.info(f"data - {data}")
+        results = model(data)
+        sentiment = results[0]["label"]
+        
+        logger.info(f"predicted the new data as {sentiment}")
 
         save_json(
-            path=self.config.prediction_file, data={"prediction": "Positive" if prediction[0] else "Negative"}
+            path=self.config.prediction_file, data={"prediction": sentiment}
         )
+
+if __name__ == "__main__":
+    model = pipeline("sentiment-analysis", framework="pt", model="SamLowe/roberta-base-go_emotions")
+    result = model("hai")
+    print(result["label"])

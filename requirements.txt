@@ -1,7 +1,13 @@
 scikit-plot==0.3.7
 mlflow
 types-PyYAML
-Flask
+Flask==3.0.2
 Flask-Cors
 python-box
-#-e .
+numpy
+pandas
+ensure
+nltk
+transformers
+torch
+-e .
